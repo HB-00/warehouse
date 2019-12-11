@@ -1,0 +1,13 @@
+<% if @user.valid? %>
+  location.href = '/users/notice?key=to_active'
+<% elsif @user.errors.messages[:email].present? %>
+  displayError($('#user_email'), 'Email <%= @user.errors.messages[:email].first %>')
+<% elsif @user.errors.messages[:password].present? %>
+  displayError($('#session_password'), 'Password <%= @user.errors.messages[:password].first %>')
+<% end %>
+
+function displayError(obj, message) {
+    obj.parents('.form-item').addClass('form-item-error')
+    obj.parents('.form-item').next().removeClass('hidden')
+    obj.parents('.form-item').next().find('.error-message').text(message)
+}

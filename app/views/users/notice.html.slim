@@ -1,0 +1,6 @@
+h3.title.d-flex.align-self-center Notice
+
+- if params[:key] == 'to_active'
+  .info An email has sent to you to active your account, please go to your mailbox to check it.
+- elsif params[:key] == 'failed_active'
+  .info Sorry, the validation code is invalid.

@@ -1,0 +1,34 @@
+#login-with-password.login-box.sign-in-sign-up-box
+  .title Sign Up
+  = form_for @user, remote: true, html: { class: 'signup-form sign-in-sign-up-form' } do |f|
+    = hidden_field_tag :authenticity_token, csrf_meta_tag
+    .form-item.email-form-item
+      label
+        i.fa.fa-envelope-o aria-hidden="true" 
+      = f.text_field :email, placeholder: 'Your email', class: 'email-input'
+    .input-tip.hidden
+      span#email-error.error
+        i.fa.fa-minus-circle aria-hidden="true" 
+        span.error-message
+    .form-item
+      label
+        i.fa.fa-lock aria-hidden="true" 
+      = f.password_field :password, placeholder: 'Your password', class: 'password-input'
+    .input-tip.hidden
+      span#password-error.error
+        i.fa.fa-minus-circle aria-hidden="true" 
+        span.error-message
+    .form-item
+      label
+        i.fa.fa-lock aria-hidden="true" 
+      = f.password_field :password_confirmation, placeholder: 'Your password', class: 'password-confirmation-input'
+    .input-tip.hidden
+      span#password-confirmation-error.error
+        i.fa.fa-minus-circle aria-hidden="true" 
+        span.error-message
+
+    .other-options
+        = link_to 'Already has account? Login now', login_path
+    
+    button.btn.signup-btn.submit-button type="button"  Submit
+    

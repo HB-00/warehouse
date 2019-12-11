@@ -1,0 +1,31 @@
+@import "bootstrap";
+@import 'sessions';
+
+
+html {
+  min-height: 100vh;
+}
+
+
+body {
+  font-size: 1rem;
+  height: 100%;
+  min-height: 100vh;
+  color: $black;
+  //overflow-y: scroll;
+  //margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  .hidden {
+    display: none;
+  }
+
+  .outter-container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    // height: 100%;
+    padding: 40px 80px;
+  }
+}

@@ -1,0 +1,14 @@
+<% if @user.nil? %>
+    displayError($('.email-input:visible'), "User doesn't exist")
+<% elsif @user.errors.messages[:email].present? %>
+    displayError($('#session_email'), 'User <%= @user.errors.messages[:email].first %>')
+<% elsif @user.errors.messages[:password].present? %>
+    displayError($('#session_password'), '<%= @user.errors.messages[:password].first %>')
+<% end %>
+
+
+function displayError(obj, message) {
+    obj.parents('.form-item').addClass('form-item-error')
+    obj.parents('.form-item').next().removeClass('hidden')
+    obj.parents('.form-item').next().find('.error-message').text(message)
+}
