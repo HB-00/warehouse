@@ -1,6 +1,6 @@
 = simple_form_for @cargo do |f|
   = f.input :name, label: '名称', input_html: { class: 'form-control' }
-  = f.input :category, label: '类别', collection: Cargo.categories.keys.map{|x|[x.capitalize, x]}, input_html: { class: 'form-control' }
+  = f.input :category, label: '类别', input_html: { class: 'form-control' }
   = f.input :total_quantity, as: :integer, label: '总数', input_html: { class: 'form-control' }
   = f.input :in_stock_quantity, as: :integer, label: '在库数量', input_html: { class: 'form-control' }
   = f.input :description, as: :text, label: '描述', input_html: { class: 'form-control' }

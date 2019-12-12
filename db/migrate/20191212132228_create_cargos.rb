@@ -3,7 +3,7 @@ class CreateCargos < ActiveRecord::Migration[5.2]
     create_table :cargos do |t|
       t.string :name
       t.string :no, unqiue: true
-      t.integer :category
+      t.string :category
       t.integer :total_quantity
       t.integer :in_stock_quantity
       t.text :description

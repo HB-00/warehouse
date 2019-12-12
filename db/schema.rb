@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2019_12_12_132716) do
   create_table "cargos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "no"
-    t.integer "category"
+    t.string "category"
     t.integer "total_quantity"
     t.integer "in_stock_quantity"
     t.text "description"
