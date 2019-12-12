@@ -1,32 +1,26 @@
 nav.navbar.navbar-expand-lg.navbar-light.bg-light
-  a.navbar-brand href="/"  DATASHOP
+  a.navbar-brand href="/"  仓库管理系统
   button.navbar-toggler aria-controls="navbarNavDropdown" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarNavDropdown" data-toggle="collapse" type="button" 
     span.navbar-toggler-icon
   #navbarNavDropdown.collapse.navbar-collapse
     ul.navbar-nav
-      li.nav-item class=active_tab('home')
-        a.nav-link href="/" 
-          | Home
-          span.sr-only (current)
       li.nav-item class=active_tab('products')
-        = link_to 'Products', products_path, class: 'nav-link'
-      - if current_user
-        li.nav-item class=active_tab('dashboard')
-          = link_to 'Dashboard', dashboard_index_path , class: 'nav-link'
-        - if current_user.admin?
-          li.nav-item.dropdown
-            a#navbarDropdownMenuLink.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button" Management
-            .dropdown-menu aria-labelledby="navbarDropdownMenuLink"
-              = link_to 'Users', admin_users_path , class: 'dropdown-item'
-              = link_to 'Orders', admin_orders_path, class: 'dropdown-item'
+        = link_to '货物', cargos_path, class: 'nav-link'
+      / li.nav-item class=active_tab('dashboard')
+      /   = link_to 'Dashboard', dashboard_index_path , class: 'nav-link'
+      / - if current_user.admin?
+      /   li.nav-item.dropdown
+      /     a#navbarDropdownMenuLink.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button" Management
+      /     .dropdown-menu aria-labelledby="navbarDropdownMenuLink"
+      /       = link_to 'Users', admin_users_path , class: 'dropdown-item'
+      /       = link_to 'Orders', admin_orders_path, class: 'dropdown-item'
       - if current_user
         li.nav-item.dropdown
           a#navbarDropdownMenuLink.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button" = current_user.email
           .dropdown-menu aria-labelledby="navbarDropdownMenuLink"
-            = link_to 'Orders', orders_path , class: 'dropdown-item'
-            = link_to 'Logout', logout_path, method: :delete, class: 'dropdown-item'
-            a.dropdown-item href="#"  Another action
-            a.dropdown-item href="#"  Something else here
-      - else
-        li.nav-item
-          = link_to 'Login', login_path, class: 'nav-link'
+            / = link_to 'Orders', orders_path , class: 'dropdown-item'
+            = link_to '退出账户', logout_path, method: :delete, class: 'dropdown-item'
+            
+      / - else
+      /   li.nav-item
+      /     = link_to 'Login', login_path, class: 'nav-link'

@@ -1,0 +1,2 @@
+class IoLog < ApplicationRecord
+end

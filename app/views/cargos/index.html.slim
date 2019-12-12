@@ -1,0 +1,32 @@
+h1.text-center 货物总览
+
+.add-new-cargo
+  = link_to '新增', new_cargo_path, class: 'btn btn-success'
+
+table.table
+  thead
+    tr
+      th ID
+      th No.
+      th 名称
+      th 总数
+      th 在库数量
+      th 描述
+      - if current_user.admin?
+        th 操作
+  tbody
+    - @cargos.each do |cargo|
+      tr
+        td = cargo.id
+        td = cargo.no
+        td = cargo.name
+        td = cargo.total_quantity
+        td = cargo.in_stock_quantity
+        td = cargo.description
+        - if current_user.admin?
+          td
+            = link_to '编辑', edit_cargo_path(cargo), class: 'btn btn-primary'
+            = link_to '删除', cargo_path(cargo), method: :delete, data: { confirm: '确定要删除该货物吗？' },
+              class: 'btn btn-danger delete-cargo-button'
+            - if current_user.employee?
+              = link_to '借用', '#', class: 'btn btn-primary borrow-cargo-button'
