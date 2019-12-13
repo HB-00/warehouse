@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_secure_password
   enum role: [:employee, :admin]
+  has_many :io_logs
   validates :password, length: { in: (6..20) }, on: :create
   validates :email, presence: true, uniqueness: true,
             format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }

@@ -1,0 +1,19 @@
+h1.text-center 仓储记录
+table.table
+  thead
+    tr
+      th 编号
+      th 货物名称
+      th 类型
+      th 用户
+      th 发生时间
+  tbody
+    - @io_logs.each do |log|
+      tr
+        td log.id
+        td log.cargo.name
+        td log.kind
+        td log.user.email
+        td log.created_at.strftime('%Y年%m月%d日 %h时%M分')
+
+= paginate(@io_logs)

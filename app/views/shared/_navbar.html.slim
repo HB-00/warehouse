@@ -4,8 +4,10 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
     span.navbar-toggler-icon
   #navbarNavDropdown.collapse.navbar-collapse
     ul.navbar-nav
-      li.nav-item class=active_tab('products')
+      li.nav-item class=active_tab('cargos')
         = link_to '货物', cargos_path, class: 'nav-link'
+      li.nav-item class=active_tab('io_logs')
+        = link_to '仓储记录', io_logs_path, class: 'nav-link'
       / li.nav-item class=active_tab('dashboard')
       /   = link_to 'Dashboard', dashboard_index_path , class: 'nav-link'
       / - if current_user.admin?
