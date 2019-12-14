@@ -12,10 +12,10 @@ class IoLogsController < ApplicationController
 
   def create
     @io_log = IoLog.new(io_log_params.merge(user_id: current_user.id))
-    action = params[:kind] == 'return' ? '归还' : '出借'
-    if @cargo.save
+    action = io_log_params[:kind] == 'return' ? '归还' : '出借'
+    if @io_log.save
       flash[:success] = "成功#{action}了货物！"
-      redirect_to cargos_path
+      redirect_to io_logs_path
     else
       flash.now[:danger] = "货物#{action}失败：#{@io_log.errors.full_messages}"
       render :new

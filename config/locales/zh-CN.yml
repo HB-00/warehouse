@@ -1,0 +1,14 @@
+zh-CN:
+  activerecord:
+    io_log:
+      enum:
+        kind:
+          borrow: 出借
+          return: 归还
+
+    errors:
+      models:
+        io_log:
+          attributes:
+            cargo:
+              required: '货物必须存在'

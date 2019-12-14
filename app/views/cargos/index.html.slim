@@ -29,6 +29,10 @@ table.table
               class: 'btn btn-danger delete-cargo-button'
         - if current_user.employee?
           td
-            = link_to '借用', new_io_log_path(kind: 'borrow', cargo_id: cargo.id), class: 'btn btn-primary borrow-cargo-button'
+            - if cargo.in_stock_quantity > 0
+              = link_to '借用', new_io_log_path(kind: 'borrow', cargo_id: cargo.id), class: 'btn btn-primary borrow-cargo-button'
+            - if current_user.user_cargos.where(cargo_id: cargo.id).any?
+              = link_to '归还', new_io_log_path(kind: 'return', cargo_id: cargo.id), class: 'btn btn-primary return-cargo-button'
+
 
 = paginate(@cargos)
