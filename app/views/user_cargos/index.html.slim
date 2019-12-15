@@ -1,2 +1,18 @@
-h1 UserCargos#index
-p Find me in app/views/user_cargos/index.html.slim
+h1.text-align 我的货物
+
+table.table
+  thead
+    tr
+      th 货物名称
+      th 数量
+      th 操作
+  tbody
+    - @user_cargos.each do |uc|
+      tr
+        td = uc.cargo.name
+        td = uc.quantity
+        td
+         = link_to '借入', new_io_log_path(cargo_id: uc.cargo_id, kind: 'borrow'), class: 'btn btn-primary'
+         = link_to '归还', new_io_log_path(cargo_id: uc.cargo_id, kind: 'return'), class: 'btn btn-primary'
+
+= paginate(@user_cargos)

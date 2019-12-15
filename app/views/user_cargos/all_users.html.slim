@@ -1,0 +1,19 @@
+h1.text-align 货物追踪
+
+table.table
+  thead
+    tr
+      th 货物名称
+      th 数量
+      th 借入人
+      th 操作
+  tbody
+    - @user_cargos.each do |uc|
+      tr
+        td = uc.cargo.name
+        td = uc.quantity
+        td = uc.user&.email
+        td
+          = link_to '仓储记录', io_logs_path(user_id: uc.user_id, cargo_id: uc.cargo_id), class: 'btn btn-primary'
+
+= paginate(@user_cargos)

@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
   root 'cargos#index'
   resources :users
-  resources :cargos
+  resources :cargos do
+    resources :user_cargos, only: :index do
+      collection do
+        get :all_users
+      end
+    end
+  end
   resources :io_logs, only: [:new, :create, :index]
   get 'login', to: 'sessions#new', as: :login
   delete 'logout', to: 'sessions#destroy', as: :logout

@@ -12,7 +12,7 @@
     
   </head>
 
-  <body class="<%= params[:controller].gsub('/', '-') %>" id="<%= params[:controller].gsub('/', '-') %>-<%= action_name %>">
+  <body class="<%= params[:controller].gsub(/[\/_]/, '-') %>" id="<%= params[:controller].gsub('/', '-') %>-<%= action_name %>">
     <%= render partial: '/shared/navbar' %>
     <%= render partial: '/shared/flash' %>
     <div class='outter-container'>

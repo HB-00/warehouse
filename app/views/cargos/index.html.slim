@@ -27,6 +27,7 @@ table.table
             = link_to '编辑', edit_cargo_path(cargo), class: 'btn btn-primary'
             = link_to '删除', cargo_path(cargo), method: :delete, data: { confirm: '确定要删除该货物吗？' },
               class: 'btn btn-danger delete-cargo-button'
+            = link_to '追踪', all_users_cargo_user_cargos_path(cargo), class: 'btn btn-primary track-button'
         - if current_user.employee?
           td
             - if cargo.in_stock_quantity > 0

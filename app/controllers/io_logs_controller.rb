@@ -2,6 +2,8 @@ class IoLogsController < ApplicationController
   def index
     @io_logs = IoLog.order(id: :desc)
     @io_logs = @io_logs.where(kind: params[:kind]) if params[:kind].present?
+    @io_logs = @io_logs.where(user_id: params[:user_id]) if params[:user_id].present?
+    @io_logs = @io_logs.where(cargo_id: params[:cargo_id]) if params[:cargo_id].present?
     @io_logs = @io_logs.page(params[:page]).per(20)
   end
 
