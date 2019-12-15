@@ -3,9 +3,24 @@ class IoLog < ApplicationRecord
   belongs_to :user
   enum kind: [:borrow, :return]
   validate :check_quantity
+  validate :check_code
   after_create :update_cargo_info
+  after_create :refresh_cargo_code, if: -> { borrow? }
 
   private
+
+  def check_code
+    if borrow?
+      cargo = Cargo.find_by(code: code.strip.upcase)
+      if cargo&.id != cargo_id
+        self.errors.add(:code, '无效的提取码!')
+      end
+    end
+  end
+
+  def refresh_cargo_code
+    cargo.update code: cargo.new_code
+  end
 
   def update_cargo_info
     user_cargo = UserCargo.find_or_initialize_by(user_id: user_id, cargo_id: cargo_id)

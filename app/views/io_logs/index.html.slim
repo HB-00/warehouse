@@ -6,7 +6,9 @@ table.table
       th 货物名称
       th 数量
       th 类型
-      th 用户
+      th 提货码
+      - current_user.admin?
+        th 用户
       th 发生时间
   tbody
     - @io_logs.each do |log|
@@ -15,7 +17,9 @@ table.table
         td = log.cargo.name
         td = log.quantity
         td = I18n.t("activerecord.io_log.enum.kind.#{log.kind}")
-        td = log.user.email
+        td = log.code
+        - current_user.admin?
+          td = log.user.email
         td = log.created_at.strftime('%Y年%m月%d日 %H时%M分')
 
 = paginate(@io_logs)

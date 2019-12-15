@@ -11,6 +11,8 @@ table.table
       th 名称
       th 总数
       th 在库数量
+      - if current_user.admin?
+        th 提取码
       th 描述
       th 操作
   tbody
@@ -21,6 +23,8 @@ table.table
         td = cargo.name
         td = cargo.total_quantity
         td = cargo.in_stock_quantity
+        - if current_user.admin?
+          td = cargo.code
         td = cargo.description
         - if current_user.admin?
           td

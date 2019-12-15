@@ -2,8 +2,13 @@ class IoLogsController < ApplicationController
   def index
     @io_logs = IoLog.order(id: :desc)
     @io_logs = @io_logs.where(kind: params[:kind]) if params[:kind].present?
-    @io_logs = @io_logs.where(user_id: params[:user_id]) if params[:user_id].present?
     @io_logs = @io_logs.where(cargo_id: params[:cargo_id]) if params[:cargo_id].present?
+    if current_user.admin?
+      @io_logs = @io_logs.where(user_id: params[:user_id]) if params[:user_id].present?
+    elsif current_user.employee?
+      @io_logs = @io_logs.where(user_id: current_user.id)
+    end
+
     @io_logs = @io_logs.page(params[:page]).per(20)
   end
 
@@ -27,6 +32,6 @@ class IoLogsController < ApplicationController
   private
 
   def io_log_params
-    params.require(:io_log).permit(:cargo_id, :kind, :quantity)
+    params.require(:io_log).permit(:cargo_id, :kind, :quantity, :code)
   end
 end
