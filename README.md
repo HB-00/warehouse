@@ -1,24 +1,13 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+#### Run program as follows:
 
-Things you may want to cover:
+* bundle install
+* config database.yml, set your username and password
+* rake db:create
+* rake db:migrate
+* rake db:seed
+* rails s
+* Visit http://localhost:3000
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+#### The default admin account is: lucky@google.com, password is: 123456
