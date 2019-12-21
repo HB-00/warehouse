@@ -1,9 +1,9 @@
 <% if @user.valid? %>
   location.href = '/users/notice?key=to_active'
 <% elsif @user.errors.messages[:email].present? %>
-  displayError($('#user_email'), 'Email <%= @user.errors.messages[:email].first %>')
+  displayError($('#user_email'), '邮箱地址不合格或已存在')
 <% elsif @user.errors.messages[:password].present? %>
-  displayError($('#session_password'), 'Password <%= @user.errors.messages[:password].first %>')
+  displayError($('#session_password'), '密码不符合规则')
 <% end %>
 
 function displayError(obj, message) {

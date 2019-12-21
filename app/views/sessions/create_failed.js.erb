@@ -1,9 +1,9 @@
 <% if @user.nil? %>
-    displayError($('.email-input:visible'), "User doesn't exist")
+    displayError($('.email-input:visible'), "用户不存在")
 <% elsif @user.errors.messages[:email].present? %>
-    displayError($('#session_email'), 'User <%= @user.errors.messages[:email].first %>')
+    displayError($('#session_email'), '邮箱不符合规范')
 <% elsif @user.errors.messages[:password].present? %>
-    displayError($('#session_password'), '<%= @user.errors.messages[:password].first %>')
+    displayError($('#session_password'), '密码不正确')
 <% end %>
 
 
