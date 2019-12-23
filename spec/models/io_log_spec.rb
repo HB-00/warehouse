@@ -10,7 +10,7 @@ RSpec.describe IoLog, type: :model do
       cargo = create(:cargo, total_quantity: 100, in_stock_quantity: 20)
       user_cargo = create(:user_cargo, user: user, cargo: cargo, quantity: 5)
       expect {create(:borrow_io_log, quantity: 30, cargo: cargo, user: user, code: cargo.code)}.to raise_error(ActiveRecord::RecordInvalid)
-      expect {create(:return_io_log, quantity: 10)}.to raise_error(ActiveRecord::RecordInvalid)
+      expect {create(:return_io_log, quantity: 10, cargo: cargo, user: user, code: cargo.code)}.to raise_error(ActiveRecord::RecordInvalid)
     end
   end
 

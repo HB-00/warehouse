@@ -42,7 +42,7 @@ class IoLog < ApplicationRecord
 
   def check_quantity
     if borrow?
-      total = cargo.in_stock_quantity
+      total = cargo&.in_stock_quantity.to_i
       self.errors.add(:quantity, "该货物目前最多可借#{total}件") if quantity > total
     elsif return?
       total = user.user_cargos.find_by(cargo_id: cargo_id)&.quantity

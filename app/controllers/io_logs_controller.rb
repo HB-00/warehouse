@@ -27,6 +27,7 @@ class IoLogsController < ApplicationController
       flash.now[:danger] = "货物#{action}失败：#{@io_log.errors.full_messages}"
       render :new
     end
+    puts @io_log.errors
   end
 
   private
