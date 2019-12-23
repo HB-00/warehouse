@@ -5,7 +5,7 @@ class Cargo < ApplicationRecord
   has_many :io_logs
   has_many :user_cargos
   validates :name, :category, :total_quantity, :in_stock_quantity, presence: true
-  validates :code, presence: true, uniqueness: true
+  # validates :code, presence: true, uniqueness: true
 
   def new_code
     strs = ('a'..'z').to_a + (0..9).to_a

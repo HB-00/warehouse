@@ -5,24 +5,23 @@ class SessionsController < ApplicationController
     end
 
     def create
-      @user = User.find_by(name: session_params[:name])
+      @user = User.find_by(email: session_params[:email])
       return render 'create_failed' if @user.nil?
 
       # check wrong password count
-      user_key = @user.wrong_password_cache_key
-      wrong_count = Rails.cache.read(user_key).to_i
-      if wrong_count > 5
-        @user.errors.add(:password, 'too many wrong times, try after 24 hours.')
-        return render 'create_failed'
-      end
-
+      # user_key = @user.wrong_password_cache_key
+      # wrong_count = Rails.cache.read(user_key).to_i
+      # if wrong_count > 5
+      #   @user.errors.add(:password, 'too many wrong times, try after 24 hours.')
+      #   return render 'create_failed'
+      # end
       if verify_password(@user)
         log_in @user
-        Rails.cache.delete(user_key)
+        # Rails.cache.delete(user_key)
         @url = params[:redirect_url].presence || '/'
         return render 'create_succeeded'
       end
-      Rails.cache.write(user_key, wrong_count + 1, expires_in: 24.hours)
+      # Rails.cache.write(user_key, wrong_count + 1, expires_in: 24.hours)
       render 'create_failed'
     end
 
