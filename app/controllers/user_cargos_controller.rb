@@ -1,5 +1,5 @@
 class UserCargosController < ApplicationController
-  before_action :authenticate_admin!, only: :users
+  before_action :authenticate_admin!, only: :all_users
   def index
     @user_cargos = current_user.user_cargos.includes(:cargo)
     @user_cargos = @user_cargos.order(id: :desc)
