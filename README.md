@@ -1,6 +1,5 @@
-# README
 
-#### Run program as follows:
+#### 按如下步骤可运行程序:
 
 * bundle install
 * config database.yml, set your username and password
@@ -8,6 +7,6 @@
 * rake db:migrate
 * rake db:seed
 * rails s
-* Visit http://localhost:3000
+* 进入 http://localhost:3000
 
-#### The default admin account is: lucky@google.com, password is: 123456
+#### 管理员账号: lucky@google.com, 密码: 123456
