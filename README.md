@@ -2,7 +2,7 @@
 #### 按如下步骤可运行程序:
 
 * bundle install
-* config database.yml, set your username and password
+* config database.yml
 * rake db:create
 * rake db:migrate
 * rake db:seed
